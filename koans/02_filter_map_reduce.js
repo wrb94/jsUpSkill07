@@ -64,9 +64,15 @@ describe("Map", () => {
 
     // fibonacci :: Number → Number
     function fibonacci(n) {
-      if (!n) return 0;
+      if (n === 0) return 0;
       if (n === 1) return 1;
-      return fibonacci(n - 1) + fibonacci(n - 2);
+      let curr = 1, prev = 0, tmp;
+      for (var i = 1; i < n; i++) {
+        tmp = curr;
+        curr = curr + prev;
+        prev = tmp;
+      }
+      return curr;
     }
     /***************************************************************/
 
@@ -80,10 +86,12 @@ describe("Map", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // map :: ((a → b), [a]) → [b]
-    function map(fun, val) {
-      return val.forEach(() => {
-        return fun(val);
+    function map(fun, values) {
+      const result = [];
+      values.forEach((value) => {
+        result.push(fun(value));
       })
+      return result;
     }
     /***************************************************************/
 
@@ -99,7 +107,14 @@ describe("Map", () => {
     // HINT: You can do it in one line using Array.from (or spread operator), array constructor and built-in map function
 
     // range :: (Number, Number) → [Number]
-
+    function range(start, end) {
+      if (start >= end) return [];
+      let n = start;
+      const result = [start];
+      while (n !== end)
+        result.push(++n);
+      return result;
+    }
     /***************************************************************/
 
     test("renders range from natural numbers", () => {
@@ -118,7 +133,13 @@ describe("Reduce", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // fromPairs :: ({ [a]: b }) → [{a, b}]
-
+    function fromPairs(arr) {
+      const result = {};
+      arr.forEach((elem) => {
+        result[elem[0]] = elem[1];
+      })
+      return result;
+    }
     /***************************************************************/
 
     test("transforms array of 2-element arrays with a key and a value to an object", () => {
@@ -130,7 +151,11 @@ describe("Reduce", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // map :: ((a → b), [a]) → [b]
-
+    function map(fun, arr) {
+      return arr.reduce((result, val) => {
+        return result.concat(fun(val));
+      }, [])
+    }
     /***************************************************************/
 
     test("accepts project function and returns new array", () => {
@@ -143,7 +168,13 @@ describe("Reduce", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // filter :: ((a → Boolean), [a]) → [a]
-
+    function filter(fun, arr) {
+      return arr.reduce((result, val) => {
+        if (fun(val))
+          return result.concat(val);
+        return result;
+      }, [])
+    }
     /***************************************************************/
 
     test("accepts predicate and returns new array", () => {
