@@ -3,7 +3,10 @@ describe("Partial application", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // sum :: Number → Number → Number
-
+    function sum(a, b) {
+      if (b || b === 0) return a + b;
+      return (c) => a + c;
+    }
     /***************************************************************/
 
     test("sum returns a function after applying a first argument", () => {
@@ -23,7 +26,10 @@ describe("Partial application", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // map :: (a → b) → [a] → [b]
-
+    function map(fn, list) {
+      if (list && list.length) return list.map(fn);
+      return (list) => list.map(fn);
+    }
     /***************************************************************/
 
     test("sum returns a function after applying a first argument", () => {
