@@ -4,6 +4,10 @@ describe("Closures", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // counter :: () → () → Number
+    function counter() {
+      let n = 0;
+      return () => ++n;
+    }
 
     /***************************************************************/
 
@@ -26,7 +30,14 @@ describe("Closures", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // unique :: () → a → Boolean
-
+    function unique() {
+      const set = new Set();
+      return (n) => {
+        if (set.has(n)) return false;
+        set.add(n);
+        return true;
+      }
+    }
     /***************************************************************/
 
     test("keeps only first unique values dropping duplicates", () => {

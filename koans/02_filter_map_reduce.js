@@ -4,7 +4,9 @@ describe("Filter", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // predicate :: Number → Boolean
-
+    function predicate(n) {
+      return n % 2 == 0;
+    }
     /***************************************************************/
 
     test("selects only even numbers", () => {
@@ -20,7 +22,12 @@ describe("Filter", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // predicate :: String → Boolean
-
+    function predicate(word) {
+      // if (!word.length || word.length === 1) return true;
+      // if (word[0] === word[word.length - 1]) return predicate(word.slice(1, -1));
+      // return false;
+      return word.toLowerCase() !== word.toLowerCase().split('').reverse().join('');
+    }
     /***************************************************************/
 
     test("selects only non-palindromes", () => {
@@ -33,7 +40,13 @@ describe("Filter", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // filter :: ((a → Boolean), [a]) → [a]
-
+    function filter(fun, arr) {
+      const result = [];
+      arr.forEach((e) => {
+        if (fun(e)) result.push(e);
+      })
+      return result;
+    }
     /***************************************************************/
 
     test("accepts predicate and returns new array", () => {
@@ -50,7 +63,11 @@ describe("Map", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // fibonacci :: Number → Number
-
+    function fibonacci(n) {
+      if (!n) return 0;
+      if (n === 1) return 1;
+      return fibonacci(n - 1) + fibonacci(n - 2);
+    }
     /***************************************************************/
 
     test("maps n-th element to it's value", () => {
@@ -63,7 +80,11 @@ describe("Map", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // map :: ((a → b), [a]) → [b]
-
+    function map(fun, val) {
+      return val.forEach(() => {
+        return fun(val);
+      })
+    }
     /***************************************************************/
 
     test("accepts project function and returns new array", () => {
