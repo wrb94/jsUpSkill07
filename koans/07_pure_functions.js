@@ -3,7 +3,10 @@ describe("Pure functions", () => {
         /********************* YOUR IMPLEMENTATION *********************/
 
         // append :: ([a], a) -> [a]
-
+        function append(arr, value) {
+            arr.push(value);
+            return arr;
+        }
         /***************************************************************/
 
         test("mutates passed array", () => {
@@ -27,7 +30,12 @@ describe("Pure functions", () => {
         /********************* YOUR IMPLEMENTATION *********************/
 
         // append :: ([a], a) -> [a]
-
+        function append(arr, value) {
+            const newArr = [];
+            arr.forEach(n => newArr.push(n));
+            newArr.push(value);
+            return newArr;
+        }
         /***************************************************************/
 
         test("doesn't mutate passed array", () => {
