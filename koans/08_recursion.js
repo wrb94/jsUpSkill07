@@ -3,7 +3,9 @@ describe("Recursion", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // fact :: Number → Number
-
+    function fact(n) {
+      return n ? n * fact(n - 1) : 1;
+    }
     /***************************************************************/
 
     test("gives mathematicaly correct result", () => {
@@ -15,7 +17,13 @@ describe("Recursion", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // fact :: Number → Number
+    function fact(n) {
+      return factRec(n, 1);
+    }
 
+    function factRec(n, accumulator) {
+      return n ? factRec(n - 1, n * accumulator) : accumulator;
+    }
     /***************************************************************/
 
     test("gives mathematicaly correct result", () => {
@@ -27,7 +35,9 @@ describe("Recursion", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // fib :: Number → Number
-
+    function fib(n) {
+      return n > 1 ? fib(n - 1) + fib(n - 2) : n;
+    }
     /***************************************************************/
 
     test("maps n-th element to it's value", () => {
@@ -40,7 +50,13 @@ describe("Recursion", () => {
     /********************* YOUR IMPLEMENTATION *********************/
 
     // fact :: Number → Number
+    function fib(n) {
+      return fibRec(n, 0, 1);
+    }
 
+    function fibRec(n, a, b) {
+      return n > 0 ? fibRec(n - 1, b, a + b) : a;
+    }
     /***************************************************************/
 
     test("maps n-th element to it's value", () => {
